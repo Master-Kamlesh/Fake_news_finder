@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fake-news-detector
+    runtime: python311
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.4
+      - key: FLASK_ENV
+        value: production
+    buildCommand: pip install -r requirements.txt
+    healthCheckPath: /api/health
